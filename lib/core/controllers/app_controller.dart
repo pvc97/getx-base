@@ -16,5 +16,6 @@ class AppController extends GetxController {
 
   void changeLanguage(AppLanguage lang) {
     LocalizationService.changeLocale(lang);
+    // TODO: Save to local storage
   }
 }

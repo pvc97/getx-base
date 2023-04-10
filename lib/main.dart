@@ -15,10 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'GetX Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       initialBinding: AppBinding(),
       getPages: AppRouter.routes,
       initialRoute: AppRouter.initialPage,
