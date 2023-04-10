@@ -1,6 +1,6 @@
+import 'package:demo_getx/models/bg_color.dart';
 import 'package:demo_getx/presentations/home/home_controller.dart';
 import 'package:demo_getx/router/app_route.dart';
-import 'package:demo_getx/utils/extensions/bg_color_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

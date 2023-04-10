@@ -1,5 +1,5 @@
+import 'package:demo_getx/models/bg_color.dart';
 import 'package:demo_getx/presentations/home/home_controller.dart';
-import 'package:demo_getx/utils/extensions/bg_color_ext.dart';
 import 'package:get/get.dart';
 
 class CounterController extends GetxController {
