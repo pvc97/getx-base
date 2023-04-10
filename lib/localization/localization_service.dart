@@ -26,11 +26,11 @@ class LocalizationService extends Translations {
     GlobalWidgetsLocalizations.delegate,
   ];
 
-  static void changeLocale(AppLanguage lang) {
-    Get.updateLocale(_getLocaleFromLanguage(lang));
+  static void changeLocale(AppLanguage language) {
+    Get.updateLocale(_getLocaleFromLanguage(language));
   }
 
-  static Locale _getLocaleFromLanguage(AppLanguage lang) {
-    return lang.locale;
+  static Locale _getLocaleFromLanguage(AppLanguage language) {
+    return language.locale;
   }
 }
