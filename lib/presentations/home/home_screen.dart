@@ -1,4 +1,6 @@
+import 'package:demo_getx/presentations/home/home_controller.dart';
 import 'package:demo_getx/router/app_route.dart';
+import 'package:demo_getx/utils/extensions/bg_color_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,16 +9,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: Center(
-        child: ElevatedButton(
+    final homeController = Get.find<HomeController>();
+
+    return Obx(
+      () => Scaffold(
+        backgroundColor: homeController.color.value.bgColor,
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              Get.toNamed(AppRoute.counter.path);
+            },
+            child: const Text('Go to Counter'),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.toNamed(AppRoute.counter.path);
+            homeController.changeColor();
           },
-          child: const Text('Go to Counter'),
+          child: const Icon(Icons.color_lens),
         ),
       ),
     );
