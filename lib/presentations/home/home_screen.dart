@@ -1,4 +1,6 @@
+import 'package:demo_getx/router/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,8 +11,13 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: const Center(
-        child: Text('Home'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Get.toNamed(AppRoute.counter.path);
+          },
+          child: const Text('Go to Counter'),
+        ),
       ),
     );
   }
