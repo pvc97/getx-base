@@ -1,3 +1,4 @@
+import 'package:demo_getx/core/bindings/app_binding.dart';
 import 'package:demo_getx/localization/localization_service.dart';
 import 'package:demo_getx/router/app_router.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
+      initialBinding: AppBinding(),
       getPages: AppRouter.routes,
       initialRoute: AppRouter.initialPage,
       translations: LocalizationService(),
