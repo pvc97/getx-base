@@ -1,5 +1,5 @@
+import 'package:demo_getx/core/controllers/app_controller.dart';
 import 'package:demo_getx/localization/app_language.dart';
-import 'package:demo_getx/localization/localization_service.dart';
 import 'package:demo_getx/presentations/counter/counter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,8 @@ class CounterScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                LocalizationService.changeLocale(AppLanguage.vietnamese);
+                Get.find<AppController>()
+                    .changeLanguage(language: AppLanguage.vietnamese);
               },
               child: const Text('Change language'),
             ),
