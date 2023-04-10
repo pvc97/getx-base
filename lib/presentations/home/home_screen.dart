@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       () => Scaffold(
         backgroundColor: homeController.color.value.bgColor,
         appBar: AppBar(
-          title: const Text('Home'),
+          title: Text('home'.tr),
         ),
         body: Center(
           child: ElevatedButton(

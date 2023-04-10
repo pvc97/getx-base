@@ -1,3 +1,5 @@
+import 'package:demo_getx/localization/app_language.dart';
+import 'package:demo_getx/localization/localization_service.dart';
 import 'package:demo_getx/presentations/counter/counter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,11 +13,22 @@ class CounterScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Counter'),
+        title: Text('counter'.tr),
       ),
       body: Center(
-        child: Obx(
-          () => Text(counterController.counter.toString()),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () => Text(counterController.counter.toString()),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                LocalizationService.changeLocale(AppLanguage.vietnamese);
+              },
+              child: const Text('Change language'),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
