@@ -27,7 +27,14 @@ class CounterScreen extends StatelessWidget {
                 Get.find<AppController>()
                     .changeLanguage(language: AppLanguage.vietnamese);
               },
-              child: const Text('Change language'),
+              child: Text('vietnamese'.tr),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.find<AppController>()
+                    .changeLanguage(language: AppLanguage.english);
+              },
+              child: Text('english'.tr),
             ),
           ],
         ),
