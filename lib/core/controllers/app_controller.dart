@@ -1,3 +1,4 @@
+import 'package:demo_getx/constants/hive_key.dart';
 import 'package:demo_getx/data/data_provider/local/app_storage_impl.dart';
 import 'package:demo_getx/localization/app_language.dart';
 import 'package:demo_getx/localization/localization_service.dart';
@@ -14,7 +15,7 @@ class AppController extends GetxController {
 
   void _loadLanguage() {
     final appLanguage =
-        AppStorageImpl.instance.read<AppLanguage>('appLanguage');
+        AppStorageImpl.instance.read<AppLanguage>(HiveKey.appLanguage);
 
     if (appLanguage != null) {
       changeLanguage(
@@ -30,12 +31,13 @@ class AppController extends GetxController {
   }) async {
     LocalizationService.changeLocale(language);
     if (save) {
-      await AppStorageImpl.instance.write('appLanguage', language);
+      await AppStorageImpl.instance.write(HiveKey.appLanguage, language);
     }
   }
 
   void _loadTheme() async {
-    final themeMode = AppStorageImpl.instance.read<ThemeMode>('themeMode');
+    final themeMode =
+        AppStorageImpl.instance.read<ThemeMode>(HiveKey.themeMode);
 
     if (themeMode != null) {
       changeTheme(
@@ -51,7 +53,7 @@ class AppController extends GetxController {
   }) async {
     Get.changeThemeMode(themeMode);
     if (save) {
-      await AppStorageImpl.instance.write('themeMode', themeMode);
+      await AppStorageImpl.instance.write(HiveKey.themeMode, themeMode);
     }
   }
 
