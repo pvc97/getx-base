@@ -12,17 +12,22 @@ class AppController extends GetxController {
     _loadLanguage();
   }
 
-  void _loadLanguage() async {
-    // TODO: Read from local storage
-    final AppLanguage appLanguage =
-        AppStorageImpl.instance.read('appLanguage') ?? AppLanguage.english;
-    changeLanguage(
-      language: appLanguage,
-      save: false,
-    );
+  void _loadLanguage() {
+    final appLanguage =
+        AppStorageImpl.instance.read<AppLanguage>('appLanguage');
+
+    if (appLanguage != null) {
+      changeLanguage(
+        language: appLanguage,
+        save: false,
+      );
+    }
   }
 
-  void changeLanguage({required AppLanguage language, bool save = true}) async {
+  Future<void> changeLanguage({
+    required AppLanguage language,
+    bool save = true,
+  }) async {
     LocalizationService.changeLocale(language);
     if (save) {
       await AppStorageImpl.instance.write('appLanguage', language);
@@ -30,25 +35,28 @@ class AppController extends GetxController {
   }
 
   void _loadTheme() async {
-    // TODO: Read from local storage
-    // changeTheme(
-    //   themeMode: ThemeMode.light,
-    //   save: false,
-    // );
-  }
+    final themeMode = AppStorageImpl.instance.read<ThemeMode>('themeMode');
 
-  void changeTheme({required ThemeMode themeMode, bool save = true}) {
-    Get.changeThemeMode(themeMode);
-    if (save) {
-      // TODO: Save to local storage
+    if (themeMode != null) {
+      changeTheme(
+        themeMode: themeMode,
+        save: false,
+      );
     }
   }
 
-  void toggleTheme() {
-    Get.changeThemeMode(
-      Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
-    );
+  Future<void> changeTheme({
+    required ThemeMode themeMode,
+    bool save = true,
+  }) async {
+    Get.changeThemeMode(themeMode);
+    if (save) {
+      await AppStorageImpl.instance.write('themeMode', themeMode);
+    }
+  }
 
-    // TODO: Save to local storage
+  Future<void> toggleTheme() async {
+    final themeMode = Get.isDarkMode ? ThemeMode.light : ThemeMode.dark;
+    await changeTheme(themeMode: themeMode);
   }
 }

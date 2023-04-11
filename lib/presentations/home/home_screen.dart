@@ -1,3 +1,4 @@
+import 'package:demo_getx/core/controllers/app_controller.dart';
 import 'package:demo_getx/models/bg_color.dart';
 import 'package:demo_getx/presentations/home/home_controller.dart';
 import 'package:demo_getx/router/app_route.dart';
@@ -21,9 +22,7 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               icon: Icon(Get.isDarkMode ? Icons.light_mode : Icons.dark_mode),
               onPressed: () {
-                Get.changeThemeMode(
-                  Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
-                );
+                Get.find<AppController>().toggleTheme();
               },
             ),
           ],
