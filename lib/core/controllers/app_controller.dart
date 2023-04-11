@@ -1,3 +1,4 @@
+import 'package:demo_getx/data/data_provider/local/app_storage_impl.dart';
 import 'package:demo_getx/localization/app_language.dart';
 import 'package:demo_getx/localization/localization_service.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,18 @@ class AppController extends GetxController {
 
   void _loadLanguage() async {
     // TODO: Read from local storage
-    // changeLanguage(
-    //   language: AppLanguage.vietnamese,
-    //   save: false,
-    // );
+    final AppLanguage appLanguage =
+        AppStorageImpl.instance.read('appLanguage') ?? AppLanguage.english;
+    changeLanguage(
+      language: appLanguage,
+      save: false,
+    );
   }
 
-  void changeLanguage({required AppLanguage language, bool save = true}) {
+  void changeLanguage({required AppLanguage language, bool save = true}) async {
     LocalizationService.changeLocale(language);
     if (save) {
-      // TODO: Save to local storage
+      await AppStorageImpl.instance.write('appLanguage', language);
     }
   }
 

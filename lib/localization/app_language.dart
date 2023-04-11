@@ -1,7 +1,13 @@
 import 'package:flutter/widgets.dart';
+import 'package:hive/hive.dart';
 
+part 'app_language.g.dart';
+
+@HiveType(typeId: 1)
 enum AppLanguage {
+  @HiveField(0)
   english,
+  @HiveField(1)
   vietnamese,
 }
 
