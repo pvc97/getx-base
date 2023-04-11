@@ -10,9 +10,10 @@ class AppRouter {
 
   static final routes = [
     GetPage(
-        name: AppRoute.home.path,
-        page: () => const HomeScreen(),
-        binding: HomeBinding()),
+      name: AppRoute.home.path,
+      page: () => const HomeScreen(),
+      binding: HomeBinding(),
+    ),
     GetPage(
       name: AppRoute.counter.path,
       page: () => const CounterScreen(),
