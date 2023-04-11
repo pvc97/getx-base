@@ -1,27 +1,21 @@
-import 'package:demo_getx/models/bg_color.dart';
-import 'package:flutter/foundation.dart';
+import 'package:demo_getx/utils/logger/logger.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  final color = BgColor.blue.obs;
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late TabController tabController;
+  final selectedIndex = RxInt(0);
 
   @override
   void onInit() {
     super.onInit();
-    debugPrint('HomeController onInit()');
+    tabController = TabController(length: 3, vsync: this);
+    logger.d('HomeController onInit()');
   }
 
-  void changeColor() {
-    switch (color.value) {
-      case BgColor.red:
-        color.value = BgColor.green;
-        break;
-      case BgColor.green:
-        color.value = BgColor.blue;
-        break;
-      case BgColor.blue:
-        color.value = BgColor.red;
-        break;
-    }
+  void onBottomNavigationBarItemTapped(int index) {
+    selectedIndex.value = index;
+    tabController.index = index;
   }
 }

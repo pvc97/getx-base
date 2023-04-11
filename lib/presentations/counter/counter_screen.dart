@@ -20,8 +20,12 @@ class CounterScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(
-              () => Text(counterController.counter.toString()),
+              () => Text(
+                '${counterController.counter}',
+                style: const TextStyle(fontSize: 48),
+              ),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.find<AppController>()
@@ -29,6 +33,7 @@ class CounterScreen extends StatelessWidget {
               },
               child: Text('vietnamese'.tr),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.find<AppController>()
