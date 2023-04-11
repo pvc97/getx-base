@@ -13,7 +13,10 @@ class AppConfig {
   }
 
   static Future<void> _initLocalStorages() async {
-    await AppStorageImpl.instance.init();
+    await Future.wait([
+      AppStorageImpl.instance.init(),
+      // UserStorageImpl.instance.init(),
+    ]);
   }
 
   static void _registerAdapters() {
