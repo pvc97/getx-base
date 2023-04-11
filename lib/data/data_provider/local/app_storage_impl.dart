@@ -15,8 +15,14 @@ class AppStorageImpl implements LocalStorage {
   }
 
   @override
-  T? read<T>(String key) {
-    return Hive.box(_boxName).get(key) as T?;
+  T? read<T>(String key, {T? defaultValue}) {
+    try {
+      final value =
+          Hive.box(_boxName).get(key, defaultValue: defaultValue) as T?;
+      return value;
+    } catch (e) {
+      return defaultValue;
+    }
   }
 
   @override
